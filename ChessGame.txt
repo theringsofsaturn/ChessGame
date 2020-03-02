@@ -1,11 +1,11 @@
 DICTIONARY ChessBoard is a 2D array 8x8 (letters:numbers)
 
-FUNCTION ClearChessboard:
-    //sets all the pieces in their correct positions
+FUNCTION ClearChessboard():
+    //sets all the pieces in their correct positions using classes
 
-FUNCTION DisplayBoard:
+FUNCTION DisplayBoard():
 
-FUNCTION CheckConditionOfBoard:
+FUNCTION CheckConditionOfBoard():
     //check after a move has been made wether the new conditions are check, checkmate, stalemate or none. 
 
 //-------------------------------------------------------------------------------------
@@ -16,22 +16,22 @@ CLASS Piece:
         where_to_move = piece
 
 class Pawn inherit from Piece:
-    BOOL METHOD CheckValidmove
+    BOOL METHOD CheckValidmove()
 
 class Queen inherit from Piece:
-    BOOL METHOD CheckValidmove
+    BOOL METHOD CheckValidmove()
 
 class King inherit from Piece: 
-    BOOL METHOD CheckValidmove
+    BOOL METHOD CheckValidmove()
 
 class Rook inherit from Piece: 
-    BOOL METHOD CheckValidmove
+    BOOL METHOD CheckValidmove()
 
 class Knight inherit from Piece: 
-    BOOL METHOD CheckValidmove
+    BOOL METHOD CheckValidmove()
 
 class Bishop inherit from Piece: 
-    BOOL METHOD CheckValidmove
+    BOOL METHOD CheckValidmove()
 
 //-------------------------------------------------------------------------------------    
 
@@ -40,23 +40,41 @@ class Bishop inherit from Piece:
 WHILE CheckConditionOfBoard = != "checkmate" and CheckConditionOfBoard != "stalemate"
     //white player
     ValidInput = False
-    WHILE not ValidInput:
-        INPUT "Move to Make"
+    While not ValidInput:
+    INPUT "Move to Make or display board"
         IF CheckValidmove and PieceInput.ISUPPER():
             move piece
             ValidInput = True
         ELSE:
             OUTPUT "Invalid move. Please try again."
+            DisplayBoard()
+            ELSE IF "PieceInput == "Display board":
+                DisplayBoard()
+
+    IF CheckConditionOfBoard() == "check":
+        OUTPUT "You are in check. Try to protect your king!"
+
+    ELSE IF CheckConditionOfBoard() == "checkmate":
+        OUTPUT "White player has won. Congratulations!"
+
+    ELSE IF CheckConditionOfBoard() == "stalemate":
+        OUTPUT "Stalemate. No player has won."
+
+    ELSE:
+        OUTPUT "Play on. No special conditions."
 
     //black player
     ValidInput = False
     While not ValidInput:
-    INPUT "Move to Make"
-        IF CheckValidmove and PieceInput.ISLOWER()
+    INPUT "Move to Make or display board"
+        IF CheckValidmove and PieceInput.ISLOWER():
             move piece
             ValidInput = True
         ELSE:
             OUTPUT "Invalid move. Please try again."
+            DisplayBoard()
+            ELSE IF "PieceInput == "Display board":
+                DisplayBoard()
 
 //---------------------------------------------------------------------------------------
 
