@@ -1,53 +1,63 @@
 DICTIONARY ChessBoard is a 2D array 8x8 (letters:numbers)
 
-FUNCTION ClearChessboard
+FUNCTION ClearChessboard:
     //sets all the pieces in their correct positions
 
-STRING FUNCTION CheckPlayerTurn //returns white or black depending on letter inputted
+FUNCTION DisplayBoard:
 
-FUNCTION DisplayBoard
-
-FUNCTION CheckConditionOfBoard
+FUNCTION CheckConditionOfBoard:
     //check after a move has been made wether the new conditions are check, checkmate, stalemate or none. 
 
-CLASS Piece
+//-------------------------------------------------------------------------------------
+
+CLASS Piece:
     DICTIONARY METHOD MovePiece(piece, location_of_piece, where_to_move)
         location_of_piece = blank
         where_to_move = piece
 
-
-class Pawn inherit from Piece 
+class Pawn inherit from Piece:
     BOOL METHOD CheckValidmove
 
-class Queen inherit from Piece 
+class Queen inherit from Piece:
     BOOL METHOD CheckValidmove
 
-class King inherit from Piece 
+class King inherit from Piece: 
     BOOL METHOD CheckValidmove
 
-class Rook inherit from Piece 
+class Rook inherit from Piece: 
     BOOL METHOD CheckValidmove
 
-class Knight inherit from Piece 
+class Knight inherit from Piece: 
     BOOL METHOD CheckValidmove
 
-class Bishop inherit from Piece 
+class Bishop inherit from Piece: 
     BOOL METHOD CheckValidmove
+
+//-------------------------------------------------------------------------------------    
+
+//-------------------------------------------------------------------------------------
 
 WHILE CheckConditionOfBoard = != "checkmate" and CheckConditionOfBoard != "stalemate"
     //white player
+    ValidInput = False
+    WHILE not ValidInput:
         INPUT "Move to Make"
-        IF CheckValidmove and CheckPlayerTurn
+        IF CheckValidmove and PieceInput.ISUPPER():
             move piece
+            ValidInput = True
         ELSE:
             OUTPUT "Invalid move. Please try again."
 
     //black player
+    ValidInput = False
+    While not ValidInput:
     INPUT "Move to Make"
-        IF CheckValidmove and CheckPlayerTurn
+        IF CheckValidmove and PieceInput.ISLOWER()
             move piece
+            ValidInput = True
         ELSE:
             OUTPUT "Invalid move. Please try again."
 
+//---------------------------------------------------------------------------------------
 
 //white pieces capital letters + location, black pieces lowercase letters + location.
