@@ -24,6 +24,10 @@ class Pawn inherit from Piece:
 
 class Queen inherit from Piece:
     BOOL METHOD CheckValidmove()
+        IF ((newColumn_Number - oldColumn_Number) / (newRow_Number - oldRow_Number)) == 1 OR ((newColumn_Number - oldColumn_Number) / (newRow_Number - oldRow_Number)) == -1:
+        return TRUE
+    ELSE:
+        FALSE
 
 class King inherit from Piece: 
     BOOL METHOD CheckValidmove()
