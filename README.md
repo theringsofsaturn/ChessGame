@@ -1,2 +1,2 @@
-Chess Game Application for Android. 
+Chess Application for Android. 
 In Progress...
