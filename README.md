@@ -1,2 +1,2 @@
-Chess Application for Android. 
+2D Chess Application for Android. 
 In Progress...
